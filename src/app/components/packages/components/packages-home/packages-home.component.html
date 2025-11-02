@@ -1,60 +1,328 @@
-<div class="packages-home">
-  <div class="container">
-    <h2 class="text-center">
-      <span>
-        {{ "Choose the package that suits you with" | translate }}
-      </span>
-
-      <span class="exceed-text">{{ "Exceed" | translate }}</span>
-    </h2>
-
-    <p class="text-center">
-      {{ "Try the system free" | translate }}
-    </p>
-
-    <div class="package-type d-flex align-items-center">
-      <div class="packages-btns d-flex align-items-center">
-        <span
-          class="d-flex align-items-center pointer"
-          [class.active]="selectedPackage === 'annual'"
-          (click)="selectPackage('annual')"
-        >
-          <a href="javascript:void(0)">سنوي</a>
+<div class="packages-home-wrapper">
+  <div class="packages-home">
+    <div class="container">
+      <h2 class="text-center" appAnimateOnScroll animationDelay="100">
+        <span>
+          {{ "Choose the package that suits you with" | translate }}
         </span>
-        <span
-          class="d-flex align-items-center pointer"
-          [class.active]="selectedPackage === 'monthly'"
-          (click)="selectPackage('monthly')"
-        >
-          <a href="javascript:void(0)">شهري</a>
-        </span>
+
+        <span class="exceed-text">{{ "Exceed" | translate }}</span>
+      </h2>
+
+      <p class="text-center" appAnimateOnScroll animationDelay="100">
+        {{ "Try the system free" | translate }}
+      </p>
+
+      <div
+        class="package-type d-flex align-items-center"
+        appAnimateOnScroll
+        animationDelay="100"
+      >
+        <div class="packages-btns d-flex align-items-center">
+          <span
+            class="d-flex align-items-center pointer"
+            [class.active]="selectedPackage === 'annual'"
+            (click)="selectPackage('annual')"
+          >
+            <a href="javascript:void(0)">سنوي</a>
+          </span>
+          <span
+            class="d-flex align-items-center pointer"
+            [class.active]="selectedPackage === 'monthly'"
+            (click)="selectPackage('monthly')"
+          >
+            <a href="javascript:void(0)">شهري</a>
+          </span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="packages mt-5">
-  <div class="container">
-    <div class="package">
-      <div class="overlay">
-        <img src="/imgs/packages/Vector 7.svg" alt="" />
-      </div>
-      <div class="package-header">
-        <img src="/imgs/packages/car.svg" alt="" />
-        <h4>المبسطة</h4>
+  <div class="packages" appAnimateOnScroll animationDelay="100">
+    <div class="container">
+      <div class="package">
+        <div class="overlay">
+          <img src="/imgs/packages/Vector 7.svg" alt="" />
+        </div>
+        <div class="package-header">
+          <img src="/imgs/packages/car.svg" alt="" />
+          <h4>{{ "Basic Plan" | translate }}</h4>
 
-        <div class="package-price">
-          <div class="price d-flex align-items-center">
-            <span>500</span>
-            <span><img src="/imgs/icons/Riyal.svg" alt="Riyal" /></span>
-            <span>/ سنوياً</span>
+          <div class="package-price">
+            <div class="price d-flex align-items-center">
+              <span>500</span>
+              <span><img src="/imgs/icons/Riyal.svg" alt="Riyal" /></span>
+              <span>/ {{ "Annually" | translate }}</span>
+            </div>
+
+            <div class="details">
+              <p class="m-0">{{ "Per User Annually" | translate }}</p>
+            </div>
+
+            <div class="fees d-inline-flex align-items-center gap-2">
+              <span>15</span>
+              <span><img src="/imgs/packages/Riyal.svg" alt="Riyal" /></span>
+              <span>{{ "Monthly Base Fee" | translate }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="package-content">
+          <div class="first-list">
+            <h4>{{ "Key Features" | translate }}</h4>
+            <ul class="status-list">
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Accounts" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Stores" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Bilingual User Interface" | translate }}</span>
+              </li>
+            </ul>
           </div>
 
-          <div class="details">
-            <p class="m-0">لكل مستخدم سنويا</p>
+          <div class="second-list">
+            <h4>{{ "Support" | translate }}</h4>
+            <ul class="status-list">
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>
+                  <span dir="ltr">24 X 7</span>
+                  {{ "Email Support" | translate }}</span
+                >
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span
+                  ><span dir="ltr">24 X 5</span>
+                  {{ "Phone Support" | translate }}</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="package main-package">
+        <div class="overlay">
+          <img src="/imgs/packages/Vector 8.svg" alt="" />
+        </div>
+        <div class="package-header">
+          <img src="/imgs/packages/plane.svg" alt="" />
+          <h4>{{ "Extended Plan" | translate }}</h4>
+
+          <div class="package-price">
+            <div class="price d-flex align-items-center">
+              <span>1200</span>
+              <span><img src="/imgs/icons/Riyal.svg" alt="Riyal" /></span>
+              <span>/ {{ "Annually" | translate }}</span>
+            </div>
+
+            <div class="details">
+              <p class="m-0">{{ "Per User Annually" | translate }}</p>
+            </div>
+
+            <div class="fees d-inline-flex align-items-center gap-2">
+              <span>22</span>
+              <span><img src="/imgs/packages/Riyal.svg" alt="Riyal" /></span>
+              <span>{{ "Monthly Base Fee" | translate }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="package-content">
+          <div class="first-list">
+            <h4>{{ "All basic features" | translate }} +</h4>
+            <ul class="status-list">
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check-orange" />
+                <span
+                  >360.000 {{ "Annual Sales Transaction" | translate }}</span
+                >
+              </li>
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check-orange" />
+                <span>{{ "Multiple Currencies" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check-orange" />
+                <span>{{ "Sales Order Management" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check-orange" />
+                <span>{{ "Purchase Order Management" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check-orange" />
+                <span>{{ "Integration" | translate }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="second-list">
+            <h4>{{ "Optional Addons" | translate }}</h4>
+            <ul class="status-list">
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check" />
+                <span class="d-flex align-items-center gap-2">
+                  <span>29</span>
+                  <span
+                    ><img src="/imgs/icons/Riyal.svg" width="20" alt="Riyal"
+                  /></span>
+                  <span>{{ "Per Basic Point of Sale" | translate }}</span>
+                </span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check" />
+                <span class="d-flex align-items-center gap-2">
+                  <span>17</span>
+                  <span
+                    ><img src="/imgs/icons/Riyal.svg" width="20" alt="Riyal"
+                  /></span>
+                  <span>{{ "Per Additional Point of Sale" | translate }}</span>
+                </span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check-orange.svg" alt="check" />
+                <span class="d-flex align-items-center gap-2">
+                  <span>1</span>
+                  <span
+                    ><img src="/imgs/icons/Riyal.svg" width="20" alt="Riyal"
+                  /></span>
+                  <span>{{ "Per Sales Manager" | translate }}</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="package">
+        <div class="overlay">
+          <img src="/imgs/packages/Vector 9.svg" alt="" />
+        </div>
+        <div class="package-header">
+          <img src="/imgs/packages/rocket.svg" alt="" />
+          <h4>{{ "Advanced Plan" | translate }}</h4>
+
+          <div class="package-price">
+            <div class="price d-flex align-items-center">
+              <span>1900</span>
+              <span><img src="/imgs/icons/Riyal.svg" alt="Riyal" /></span>
+              <span>/ سنوياً</span>
+            </div>
+
+            <div class="details">
+              <p class="m-0">لكل مستخدم سنوياً</p>
+            </div>
+
+            <div class="fees d-inline-flex align-items-center gap-2">
+              <span>30</span>
+              <span><img src="/imgs/packages/Riyal.svg" alt="Riyal" /></span>
+              <span>رسوم اساسية شهرية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="package-content">
+          <div class="first-list">
+            <h4>{{ "All extended features" | translate }} +</h4>
+            <ul class="status-list">
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Unlimited Sales Transactions" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Manufacturing" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Fixed Assets" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Business Intelligence Reports" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "API Access" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Real time Alerts and Data" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Integration" | translate }}</span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span>{{ "Trial Environment" | translate }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="second-list mb-6rem">
+            <h4>{{ "Optional Addons" | translate }}</h4>
+            <ul class="status-list">
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span class="d-flex align-items-center gap-2">
+                  <span>29</span>
+                  <span
+                    ><img src="/imgs/icons/Riyal.svg" width="20" alt="Riyal"
+                  /></span>
+                  <span>{{ "Per Basic Point of Sale" | translate }}</span>
+                </span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span class="d-flex align-items-center gap-2">
+                  <span>17</span>
+                  <span
+                    ><img src="/imgs/icons/Riyal.svg" width="20" alt="Riyal"
+                  /></span>
+                  <span>{{ "Per Additional Point of Sale" | translate }}</span>
+                </span>
+              </li>
+              <li>
+                <img src="/imgs/packages/check.svg" alt="check" />
+                <span class="d-flex align-items-center gap-2">
+                  <span>2</span>
+                  <span
+                    ><img src="/imgs/icons/Riyal.svg" width="20" alt="Riyal"
+                  /></span>
+                  <span>{{ "Per Sales Manager" | translate }}</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div
+  class="package-details-btn d-flex align-items-center justify-content-center"
+  appAnimateOnScroll
+  animationDelay="300"
+>
+  <a href="#" class="d-flex align-items-center gap-4">
+    <span>
+      {{ "Learn more details about Exceed packages" | translate }}
+    </span>
+
+    <span>
+      <i class="fa-solid fa-arrow-down"></i>
+    </span>
+  </a>
+</div>
+
+<app-package-benefits />

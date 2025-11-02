@@ -1,0 +1,53 @@
+@import '../../../../../styles/base/variables';
+
+.package-table {
+    margin-top: 5.6rem;
+
+    &-header {
+        .th {
+            background: #F3F3F3;
+            border-radius: 1.6rem;
+            padding: 1.6rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .type,
+        .package-title {
+            min-height: 6.4rem;
+            padding: 1.6rem;
+            background: #F3F3F3;
+            box-shadow: 0px 4px 40px rgba(182, 199, 225, 0.24);
+            border-radius: 1.6rem;
+            text-align: center;
+            font-size: 1.8rem;
+            color: $grayColor;
+            font-weight: 700;
+
+            &.main {
+                background: #FCDBCB;
+            }
+
+
+        }
+
+        .package-title {
+            margin: 8px 0;
+            box-shadow: none;
+        }
+
+        .benefit-name {
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+
+        .item-type {
+            background-color: #fff;
+        }
+    }
+
+
+
+
+}
