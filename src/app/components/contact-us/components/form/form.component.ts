@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from '../../../../services/language.service';
+import { AnimateOnScrollDirective } from '../../../../directives/animate.directive';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, AnimateOnScrollDirective],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })

@@ -1,0 +1,116 @@
+@import '../../../../../styles/base/variables';
+
+
+.package-data {
+    margin-top: 5.6rem;
+
+    &-item {
+        padding: 24px 20px;
+        background: #FFFFFF;
+        border: 1px solid #C7C7C7;
+        border-radius: 24px;
+        color: #C7C7C7;
+        gap: 3.2rem;
+
+        h4 {
+            font-size: 1.8rem;
+            color: $grayColor;
+
+        }
+
+        p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #959595;
+            margin: 0;
+        }
+
+        .price {
+            // flex-grow: 0.5;
+
+            span {
+                &:first-child {
+
+                    font-size: 3.2rem;
+                    font-weight: 700;
+                    color: $orange;
+                }
+            }
+
+            span:last-child {
+                font-size: 1.4rem;
+                font-weight: 300;
+                color: #959595;
+            }
+        }
+
+        // &-title {
+
+        //     gap: 8rem;
+        // }
+
+        // &-content {
+        //     gap: 5rem;
+        // }
+    }
+}
+
+
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-radius: 0;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    border-radius: 0;
+
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+
+.increase-decrease-btn {
+    .form-control {
+        flex: 0 0 auto;
+        width: 80px;
+        border-radius: 0 !important;
+        color: #C7C7C7;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    button {
+        background-color: $orange;
+        color: #fff;
+        padding: 12px;
+        border: 0;
+
+    }
+}
+
+
+
+.package-details-btn {
+    margin-top: 9.8rem;
+
+    a {
+        min-width: 300px;
+        text-decoration: none;
+        padding: 16px 32px;
+        background: linear-gradient(89.53deg, #450099 16.63%, #311352 140.6%);
+        border-radius: 12px;
+
+        span {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #fff;
+        }
+    }
+}

@@ -223,5 +223,15 @@
   "API Access": "الوصول الى واجهة برمجة التطبيقات",
   "Real time Alerts and Data": "تنبيهات وبيانات لحظية",
   "Trial Environment": "بيئة تجريبية",
-  "Learn more details about Exceed packages": "اعرف تفاصيل اكتر عن باقات اكسيد"
+  "Learn more details about Exceed packages": "اعرف تفاصيل اكتر عن باقات اكسيد",
+  "UserPerYear": "مستخدم / سنة",
+  "Additional User": "المستخدم الاضافي",
+  "Number of HR Users": "عدد المستخدمين من الموارد البشرية",
+  "BranchPerYear": "فرع / سنة",
+  "Additional Branch": "الفرع الاضافي",
+  "Number of Additional Branches": "عدد الفروع الاضافية",
+  "AdditionalStore": "المستودع الاضافي",
+  "StoresPerYear": "مستودع / سنة",
+  "Number of Additional Stores": "عدد المستودعات الاضافية",
+  "Purchase Tracking": "متابعة للشراء"
 }

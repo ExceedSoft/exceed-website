@@ -220,5 +220,15 @@
   "API Access": "API Access",
   "Real time Alerts and Data": "Real time Alerts and Data",
   "Trial Environment": "Trial Environment",
-  "Learn more details about Exceed packages": "Learn more details about Exceed packages"
+  "Learn more details about Exceed packages": "Learn more details about Exceed packages",
+  "UserPerYear": "User per year",
+  "Additional User": "Additional User",
+  "Number of HR Users": "Number of HR Users",
+  "BranchPerYear": "Branch per year",
+  "Additional Branch": "Additional Branch",
+  "Number of Additional Branches": "Number of additional branches",
+  "AdditionalStore": "Additional store",
+  "StoresPerYear": "Store / Year",
+  "Number of Additional Stores": "Number of Additional Stores",
+  "Purchase Tracking": "Purchase Tracking"
 }

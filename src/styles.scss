@@ -20,6 +20,10 @@
     --end: left;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     direction: var(--direction);
     text-align: var(--text-align);
