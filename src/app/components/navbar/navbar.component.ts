@@ -35,7 +35,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private scrollListener: (() => void) | null = null;
 
   constructor() {
-    // Use afterNextRender for browser-only code
     afterNextRender(() => {
       this.setupScrollListener();
     });
@@ -81,13 +80,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   private setupScrollListener(): void {
-    // Check if we're in a browser environment
     if (typeof window === 'undefined') return;
 
     this.scrollListener = this.handleScroll.bind(this);
     window.addEventListener('scroll', this.scrollListener, { passive: true });
 
-    // Initial check
     this.handleScroll();
   }
 
@@ -103,14 +100,33 @@ export class NavbarComponent implements OnInit, OnDestroy {
     const scrollY = window.scrollY || window.pageYOffset;
     const viewportHeight = window.innerHeight;
 
-    // Add background when scrolled past 100vh
     if (scrollY > viewportHeight) {
       console.log('YES');
       this.navElement.nativeElement.classList.add('scrolled');
-      // this.navElement.nativeElement.classList.add('navbar-with-bg');
     } else {
       this.navElement.nativeElement.classList.remove('scrolled');
-      // this.navElement.nativeElement.classList.remove('navbar-with-bg');
     }
+  }
+
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+
+    if (this.isMobileMenuOpen) {
+      document.body.classList.add('navbar-expanded');
+    } else {
+      document.body.classList.remove('navbar-expanded');
+    }
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+    document.body.classList.remove('navbar-expanded');
+  }
+
+  switchLanguageAndClose(lang: string) {
+    this.closeMobileMenu();
+    this.switchLanguage(lang);
   }
 }

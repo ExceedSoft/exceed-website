@@ -19,7 +19,7 @@ export const routes: Routes = [
       },
       seoDescription: {
         en: 'Streamline your business operations with Exceed ERP by Atheebsoft.',
-        ar: 'قم بتبسيط عملياتك التجارية مع نظام اكسيد ERP من أثير سوفت',
+        ar: 'قم بتبسيط عملياتك التجارية مع نظام اكسيد ERP من عذيب سوفت',
       },
       title: 'Home',
       navbarBackground: false,
