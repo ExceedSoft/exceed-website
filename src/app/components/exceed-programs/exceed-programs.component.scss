@@ -1,3 +1,137 @@
+// @import '../../../styles/base/variables';
+
+// p {
+//     font-size: 1.6rem;
+//     font-weight: 400;
+//     line-height: 2;
+//     color: $header;
+// }
+
+// .exceed-text::before {
+//     width: 20rem !important;
+//     height: 8rem !important;
+// }
+
+// .exceed-programs {
+//     h3.exceed-programs-header {
+//         font-size: 4.8rem;
+//     }
+
+//     p.exceed-programs-text {
+//         width: 60%;
+//         margin: 4rem auto 0 auto;
+//         font-size: 1.8rem;
+//         color: $header;
+//         line-height: 2;
+//     }
+
+//     .programs {
+//         margin-top: 7.2rem;
+//     }
+
+//     .program {
+//         background-color: $mainCardColor;
+//         height: 319px;
+//         padding: 0 3.2rem; // Consistent padding
+//         border-radius: 1.6rem;
+//         border: 1px solid $cardBorderColor;
+//         position: relative;
+//         overflow: hidden;
+//     }
+
+//     .program.accounting {
+//         background-color: #E4F1FF;
+//         border: 1px solid #E2E7F3;
+//     }
+
+//     .program-image {
+//         height: 100%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         flex: 1;
+
+//         img {
+//             height: 100%;
+//             width: auto;
+//             max-width: 100%;
+//             object-fit: contain;
+//         }
+//     }
+
+//     .content {
+//         flex: 1;
+//         max-width: 60%;
+//     }
+
+//     .sales-container {
+//         padding: 6.4rem 0 0 0; // Consistent padding
+//         background-color: #F4F8FD;
+//         border-radius: 16px;
+//         border: 1px solid #E2E7F3;
+//         position: relative;
+//         z-index: 2;
+//         overflow: hidden;
+//         height: 100%;
+
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             left: 0;
+//             bottom: 0;
+//             right: 0;
+//             background-color: #E6EBF3;
+//             width: 100%;
+//             height: 100%;
+//             z-index: -1;
+//             clip-path: polygon(0 70%, 100% 48%, 100% 100%, 0% 100%);
+//         }
+
+//         &-text {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//             align-items: center;
+//             gap: 1.6rem;
+//             margin-bottom: 2rem;
+//         }
+
+//         &-img {
+
+//             img {
+//                 max-width: 100%;
+//                 height: auto;
+//             }
+//         }
+//     }
+
+//     @media (max-width: 991px) {
+//         .programs .row>div {
+//             margin-bottom: 2.4rem;
+//         }
+
+//         .programs .row>div:last-child {
+//             margin-bottom: 0;
+//         }
+
+//         .program {
+//             padding: 2.4rem;
+//         }
+//     }
+
+//     @media (max-width: 767px) {
+//         p.exceed-programs-text {
+//             width: 90%;
+//         }
+
+//         .program {
+//             height: auto;
+//             min-height: 280px;
+//         }
+//     }
+// }
+
+
 @import '../../../styles/base/variables';
 
 p {
@@ -32,11 +166,21 @@ p {
     .program {
         background-color: $mainCardColor;
         height: 319px;
-        padding: 0 3.2rem; // Consistent padding
+        padding: 0 3.2rem;
         border-radius: 1.6rem;
         border: 1px solid $cardBorderColor;
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
     }
 
     .program.accounting {
@@ -65,7 +209,7 @@ p {
     }
 
     .sales-container {
-        padding: 6.4rem 0 0 0; // Consistent padding
+        padding: 6.4rem 0 0 0;
         background-color: #F4F8FD;
         border-radius: 16px;
         border: 1px solid #E2E7F3;
@@ -73,6 +217,12 @@ p {
         z-index: 2;
         overflow: hidden;
         height: 100%;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
 
         &::before {
             content: "";
@@ -94,39 +244,117 @@ p {
             align-items: center;
             gap: 1.6rem;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
-        &-img {
+        &-img img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
 
-            img {
-                max-width: 100%;
-                height: auto;
-            }
+    /* ==============================
+     🔹 RESPONSIVE STYLES
+     ============================== */
+
+    @media (max-width: 1200px) {
+        .program {
+            height: auto;
+            min-height: 300px;
+            padding: 2.4rem;
         }
     }
 
     @media (max-width: 991px) {
+        h3.exceed-programs-header {
+            font-size: 3.6rem;
+        }
+
+        p.exceed-programs-text {
+            width: 80%;
+            font-size: 1.6rem;
+        }
+
         .programs .row>div {
             margin-bottom: 2.4rem;
         }
 
-        .programs .row>div:last-child {
-            margin-bottom: 0;
+        .program {
+            flex-direction: column;
+            text-align: center;
+            padding: 2.4rem;
+            gap: 2rem;
         }
 
-        .program {
-            padding: 2.4rem;
+        .content {
+            max-width: 100%;
+        }
+
+        .program-image {
+            order: -1;
+
+            /* Image on top for smaller screens */
+            img {
+                width: 80%;
+                height: auto;
+            }
+        }
+
+        .sales-container {
+            padding: 3.2rem 2.4rem;
         }
     }
 
     @media (max-width: 767px) {
         p.exceed-programs-text {
             width: 90%;
+            margin: 2rem auto 0 auto;
         }
 
         .program {
-            height: auto;
-            min-height: 280px;
+            min-height: auto;
+            padding: 2rem;
+            border: 1px solid #e0e6f0;
+            border-left: none;
+            border-right: none;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #dee2e8;
+            }
+        }
+
+        .sales-container {
+            border-radius: 12px;
+            padding: 2rem 1.6rem;
+
+            &::before {
+                clip-path: polygon(0 75%, 100% 55%, 100% 100%, 0% 100%);
+            }
+        }
+    }
+
+    @media(max-width: 600px) {
+
+        .content {
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+
+        h3.exceed-programs-header {
+            font-size: 2.8rem;
+        }
+
+        p.exceed-programs-text {
+            font-size: 1.4rem;
+        }
+
+        .program {
+            gap: 1.6rem;
+            padding: 1.6rem;
         }
     }
 }

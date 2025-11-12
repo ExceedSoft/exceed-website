@@ -79,6 +79,7 @@
             .content {
                 p {
                     color: $grayColor;
+                    text-align: start;
 
                 }
             }
@@ -89,6 +90,7 @@
                 color: #fff;
                 font-size: 1.6rem;
                 font-weight: 600;
+                text-align: start;
 
             }
         }
@@ -114,4 +116,18 @@
             margin-inline-start: 1rem;
         }
     }
+}
+
+@media(max-width: 767px) {
+    .questions-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        div {
+            margin-top: 0 !important;
+        }
+    }
+
+
 }

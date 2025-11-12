@@ -1,6 +1,4 @@
 .counter-sec {
-    // margin-top: 8rem;
-
     &-container {
         background: url('/imgs/Facts.svg') 100% 100% no-repeat;
         background-size: cover;
@@ -9,8 +7,16 @@
         color: #fff;
 
         .counter-content {
-            li {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem; // spacing between items
 
+            li {
+                flex: 1 1 22%; // four items per row by default
+                list-style: none;
+                text-align: center;
                 position: relative;
                 padding-inline-end: 3rem;
 
@@ -30,7 +36,6 @@
                 }
 
                 span {
-
                     font-size: 3.2rem;
                     transition: all 0.3s ease;
                 }
@@ -39,9 +44,7 @@
                     display: inline-block;
 
                     &.animated {
-                        // color: #ffd700; // Gold color when animated
                         transform: scale(1.1);
-                        // text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
                     }
                 }
 
@@ -52,5 +55,50 @@
                 }
             }
         }
+    }
+}
+
+/* 🌐 Responsive breakpoints */
+
+/* iPad / tablet (2 items per row) */
+@media (max-width: 1024px) {
+    .counter-sec-container .counter-content li {
+        flex: 1 1 45%;
+
+        padding-inline-end: 0;
+    }
+
+    .counter-sec-container {
+        padding: 2rem 3rem;
+    }
+}
+
+/* Mobile (1 item per row) */
+@media (max-width: 600px) {
+
+    .counter-sec-container {
+        background: url('/imgs/Facts.svg') center center no-repeat;
+        background-size: cover;
+    }
+
+    .counter-sec-container .counter-content li {
+        flex: 1 1 100%;
+        padding-inline-end: 0;
+    }
+
+
+    .counter-sec-container .counter-content li::before {
+        display: none;
+    }
+
+    .counter-sec-container {
+        padding: 2rem;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .section-top-space {
+        margin-top: 4rem !important;
     }
 }

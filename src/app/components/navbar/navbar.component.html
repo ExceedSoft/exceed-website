@@ -6,7 +6,16 @@
 >
   <div class="container-fluid py-2">
     <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="/imgs/icons/brandmark-design.svg" alt="Exceed Logo" />
+      <img
+        src="/imgs/icons/brandmark-design-small.svg"
+        alt="Exceed Logo"
+        class="navbar-logo-mobile w-100"
+      />
+      <img
+        src="/imgs/icons/brandmark-design.svg"
+        alt="Exceed Logo"
+        class="navbar-logo-desktop"
+      />
     </a>
 
     <button
@@ -14,98 +23,235 @@
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <!-- <i class="fa-solid fa-bars"></i> -->
+      <img src="/imgs/icons/menu.svg" alt="menu" draggable="false" width="24" />
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="nav-border-wrapper">
-        <ul class="navbar-nav mx-auto gap-5">
-          <li class="nav-item">
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav-content">
+        <div class="nav-border-wrapper">
+          <ul class="navbar-nav mx-auto gap-5">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="getLocalizedPath('home')"
+                [class.active]="isActive('home')"
+              >
+                {{ "Home" | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="getLocalizedPath('about')"
+                [class.active]="isActive('about')"
+              >
+                {{ "About Exceed" | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [class.active]="isActive('work-fields')"
+                [routerLink]="getLocalizedPath('work-fields')"
+              >
+                {{ "Work Fields" | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [class.active]="isActive('packages')"
+                [routerLink]="getLocalizedPath('packages')"
+              >
+                {{ "Packages" | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [class.active]="isActive('contact-us')"
+                [routerLink]="getLocalizedPath('contact-us')"
+              >
+                {{ "Contact Us" | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [class.active]="isActive('programs')"
+                [routerLink]="getLocalizedPath('programs')"
+              >
+                {{ "Exceed programs" | translate }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="navbar-nav align-items-center">
+          <button class="btn btn-outline-light min-w-130px raduis-20 h-40">
+            {{ "CallUs" | translate }}
+          </button>
+
+          <div class="separator mx-3"></div>
+
+          <div class="dropdown">
             <a
-              class="nav-link active"
-              [routerLink]="getLocalizedPath('home')"
-              [class.active]="isActive('home')"
+              class="btn-language d-flex align-items-center gap-2"
+              type="button"
+              (click)="switchLanguage(currentLanguage == 'ar' ? 'en' : 'ar')"
             >
-              {{ "Home" | translate }}
+              <img
+                [src]="
+                  currentLanguage === 'ar'
+                    ? '/icons/flag-en.png'
+                    : '/icons/flag-ar.png'
+                "
+                [alt]="currentLanguage === 'en' ? 'Saudi Flag' : 'US Flag'"
+                class="flag-icon"
+              />
+              <span class="language-text">
+                {{ currentLanguage === "en" ? "Ar" : "En" }}
+              </span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [routerLink]="getLocalizedPath('about')"
-              [class.active]="isActive('about')"
-            >
-              {{ "About Exceed" | translate }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="isActive('work-fields')"
-              [routerLink]="getLocalizedPath('work-fields')"
-            >
-              {{ "Work Fields" | translate }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="isActive('packages')"
-              [routerLink]="getLocalizedPath('packages')"
-            >
-              {{ "Packages" | translate }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="isActive('contact-us')"
-              [routerLink]="getLocalizedPath('contact-us')"
-            >
-              {{ "Contact Us" | translate }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="isActive('programs')"
-              [routerLink]="getLocalizedPath('programs')"
-            >
-              {{ "Exceed programs" | translate }}
-            </a>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="navbar-nav align-items-center">
-        <button class="btn btn-outline-light min-w-130px raduis-20 h-40">
-          {{ "CallUs" | translate }}
-        </button>
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav-content">
+        <!-- Mobile Overlay Background -->
+        <div class="mobile-nav-backdrop"></div>
 
-        <!-- Separator -->
-        <div class="separator mx-3"></div>
-
-        <!-- Language Dropdown -->
-        <div class="dropdown">
-          <a
-            class="btn-language d-flex align-items-center gap-2"
-            type="button"
-            (click)="switchLanguage(currentLanguage == 'ar' ? 'en' : 'ar')"
+        <!-- Mobile Navigation Content -->
+        <div class="mobile-nav-inner">
+          <!-- Close Button -->
+          <button
+            class="mobile-close-btn"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
           >
-            <img
-              [src]="
-                currentLanguage === 'ar'
-                  ? '/icons/flag-en.png'
-                  : '/icons/flag-ar.png'
-              "
-              [alt]="currentLanguage === 'en' ? 'Saudi Flag' : 'US Flag'"
-              class="flag-icon"
-            />
-            <span class="language-text">
-              {{ currentLanguage === "en" ? "Ar" : "En" }}
-            </span>
-          </a>
+            <i class="fa-solid fa-times"></i>
+          </button>
+
+          <!-- Navigation Links -->
+          <div class="mobile-nav-section">
+            <div class="nav-border-wrapper">
+              <ul class="navbar-nav flex-column gap-3">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [routerLink]="getLocalizedPath('home')"
+                    [class.active]="isActive('home')"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                  >
+                    {{ "Home" | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [routerLink]="getLocalizedPath('about')"
+                    [class.active]="isActive('about')"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                  >
+                    {{ "About Exceed" | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [class.active]="isActive('work-fields')"
+                    [routerLink]="getLocalizedPath('work-fields')"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                  >
+                    {{ "Work Fields" | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [class.active]="isActive('packages')"
+                    [routerLink]="getLocalizedPath('packages')"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                  >
+                    {{ "Packages" | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [class.active]="isActive('contact-us')"
+                    [routerLink]="getLocalizedPath('contact-us')"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                  >
+                    {{ "Contact Us" | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [class.active]="isActive('programs')"
+                    [routerLink]="getLocalizedPath('programs')"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                  >
+                    {{ "Exceed programs" | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Action Buttons - MOVED TO BE LAST ELEMENT -->
+          <div class="mobile-actions-section">
+            <button
+              class="btn btn-outline-light w-100 mb-3"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+            >
+              {{ "CallUs" | translate }}
+            </button>
+
+            <div class="d-flex align-items-center justify-content-center gap-3">
+              <div class="separator"></div>
+
+              <div class="dropdown">
+                <a
+                  class="btn-language d-flex align-items-center gap-2"
+                  type="button"
+                  (click)="
+                    switchLanguage(currentLanguage == 'ar' ? 'en' : 'ar')
+                  "
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNav"
+                >
+                  <img
+                    [src]="
+                      currentLanguage === 'ar'
+                        ? '/icons/flag-en.png'
+                        : '/icons/flag-ar.png'
+                    "
+                    [alt]="currentLanguage === 'en' ? 'Saudi Flag' : 'US Flag'"
+                    class="flag-icon"
+                  />
+                  <span class="language-text">
+                    {{ currentLanguage === "en" ? "Ar" : "En" }}
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -165,3 +165,16 @@
         }
     }
 }
+
+@media(max-width: 992px) {
+    .mouse-content {
+        margin-top: 2rem;
+    }
+
+    .justify-content-start {
+        justify-content: center !important;
+    }
+
+
+
+}

@@ -112,3 +112,23 @@
         font-size: 1.4rem;
     }
 }
+
+@media(max-width: 600px) {
+    .second-frame {
+        left: 4px !important;
+    }
+
+    .exceed-desktop-content {
+        padding: 1rem;
+    }
+
+    h3 {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+}

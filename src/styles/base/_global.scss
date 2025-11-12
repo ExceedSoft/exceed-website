@@ -1,5 +1,5 @@
 @import './variables';
-$font-english: 'Inter', sans-serif;
+$font-english: 'Montserrat', sans-serif;
 $font-arabic: 'Alexandria', sans-serif;
 
 // Base font size
@@ -41,6 +41,7 @@ body {
 [dir="ltr"] {
     body {
         font-family: $font-english;
+        font-weight: 600;
     }
 
     h1,
@@ -112,4 +113,10 @@ body {
 [appAnimateOnScroll].animate__animated {
     opacity: 1;
     transform: translateX(0);
+}
+
+@media(max-width: 600px) {
+    .exceed-text::before {
+        width: 10rem !important;
+    }
 }

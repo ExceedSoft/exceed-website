@@ -11,7 +11,6 @@
     padding: 8px;
 }
 
-
 .fixed-top:not(.scrolled).navbar-default {
     position: absolute;
     top: 0;
@@ -30,20 +29,8 @@
     background-color: $textColor;
     position: fixed;
     top: 0;
-    // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
-    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-
-
-    // box-shadow:
-    //     0 8px 32px rgba(0, 0, 0, 0.08),
-    //     0 0 0 1px rgba(255, 255, 255, 0.1);
-    // backdrop-filter: blur(20px) saturate(180%);
-    // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
     box-shadow: 0 4px 25px rgba(102, 126, 234, 0.3);
 }
-
-
 
 .navbar-expand-lg .navbar-nav .nav-link {
     font-size: 1.4rem;
@@ -55,20 +42,12 @@
     background: transparent !important;
 }
 
-
-
-
 .active {
     background: #fff;
     color: $textColor !important;
     border-radius: 20px;
     padding: 5px 20px !important;
-    /****/
-    // background: rgba(255, 255, 255, 0.16);
-    // border-radius: 999px;
-    // padding: 5px 20px !important;
 }
-
 
 .fixed-top:not(.scrolled).navbar-default {
     .active {
@@ -78,12 +57,9 @@
     }
 }
 
-
-
 .navbar-nav:last-child {
     padding-inline-end: 2rem;
 }
-
 
 .separator {
     width: 2px;
@@ -113,7 +89,6 @@
 
     &::after {
         margin-left: 0.5rem;
-        // border-top-color: rgba(255, 255, 255, 0.7);
         border: 0;
     }
 
@@ -123,43 +98,433 @@
     }
 }
 
-// Dropdown menu
-// .dropdown-menu {
-//     background: rgba(0, 0, 0, 0.95);
-//     backdrop-filter: blur(15px);
-//     padding: 0.5rem;
-//     min-width: 16rem;
+// Desktop Navigation Styles
+.desktop-nav-content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
 
-//     .dropdown-item {
-//         color: rgba(255, 255, 255, 0.9);
-//         padding: 0.75rem 1rem;
-//         border-radius: 0.5rem;
-//         transition: all 0.3s ease;
+// Mobile Navigation Styles
+.mobile-nav-content {
+    display: none;
+}
 
-//         &:hover,
-//         &:focus {
-//             background: rgba(255, 255, 255, 0.15);
-//             color: white;
-//         }
+// Desktop Styles (≥ 993px)
+@media (min-width: 993px) {
+    .desktop-nav-content {
+        display: flex !important;
+    }
 
-//         .language-name {
-//             font-weight: 600;
-//             font-size: 1.4rem;
-//         }
+    .mobile-nav-content {
+        display: none !important;
+    }
 
-//         .text-muted {
-//             color: rgba(255, 255, 255, 0.6) !important;
-//             font-size: 1.2rem;
-//         }
+    .navbar-toggler {
+        display: none !important;
+    }
 
-//         .bi-check2 {
-//             color: #007bff;
-//             font-weight: bold;
-//         }
-//     }
+    .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}
 
-//     .dropdown-divider {
-//         border-color: rgba(255, 255, 255, 0.2);
-//         margin: 0.5rem 0;
-//     }
-// }
+// Mobile Styles (≤ 992px)
+@media (max-width: 992px) {
+    .desktop-nav-content {
+        display: none !important;
+    }
+
+    .mobile-nav-content {
+        display: block !important;
+        width: 100% !important;
+        position: relative;
+
+    }
+
+    .navbar-toggler {
+        width: 4.4rem;
+        height: 4.4rem;
+        border: 1px solid #FFFFFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1002;
+
+
+        &:focus {
+            box-shadow: none !important;
+        }
+
+        .fa-bars {
+            color: #fff;
+            font-size: 2.4rem;
+        }
+    }
+
+    // .navbar {
+    //     padding: 2.2rem !important;
+    // }
+
+    // Mobile Collapse Styles
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 40%;
+        height: 100vh;
+        background: $textColor;
+        z-index: 1000;
+        transition: right 0.3s ease;
+        display: flex !important;
+        flex-direction: column;
+        padding: 2rem;
+        // box-shadow: -2px 0 20px rgba(0, 0, 0, 0.3);
+
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/imgs/nav-clip.svg');
+            background-repeat: no-repeat;
+            background-position: top;
+            filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%);
+            opacity: 0.1;
+            z-index: 1001;
+        }
+
+        // RTL support
+        [dir="rtl"] & {
+            right: auto;
+            left: -100%;
+            transition: left 0.3s ease;
+        }
+
+        &.show {
+            right: 0;
+
+            [dir="rtl"] & {
+                right: auto;
+                left: 0;
+            }
+        }
+    }
+
+    // Mobile Backdrop
+    .mobile-nav-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(1px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+
+        .navbar-collapse.show & {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    // Mobile Navigation Inner
+    .mobile-nav-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100% !important;
+        position: relative;
+        z-index: 1001;
+        gap: 2rem;
+
+    }
+
+    // Navigation Links Section - FIXED WIDTH ISSUES
+    .mobile-nav-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100% !important;
+
+        .nav-border-wrapper {
+            display: block;
+            width: 100% !important;
+        }
+
+        .navbar-nav {
+            background: transparent !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            // margin: 0 !important;
+            gap: 2rem !important;
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+
+            .nav-item {
+                text-align: center;
+                width: 100% !important;
+                display: block !important;
+            }
+
+            .nav-link {
+                font-size: 1.8rem !important;
+                color: #fff !important;
+                padding: 1rem !important;
+                border-radius: 8rem;
+                transition: all 0.3s ease;
+                display: block !important;
+                width: 100% !important;
+                text-align: center;
+                box-sizing: border-box;
+                max-width: 256px;
+                margin: auto;
+
+
+                &.active {
+                    font-weight: 600;
+                    font-size: 1.4rem;
+                }
+
+                &:hover,
+                &.active {
+                    background: rgba(255, 255, 255, 0.1);
+                    transform: translateX(5px);
+
+
+                    [dir="rtl"] & {
+                        transform: translateX(-5px);
+                    }
+                }
+
+                &.active {
+                    background: #fff;
+                    color: $textColor !important;
+                }
+            }
+        }
+    }
+
+    // Actions Section - FIXED WIDTH ISSUES
+    .mobile-actions-section {
+        margin-top: auto;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100% !important;
+
+        .btn {
+            padding: 1.5rem !important;
+            font-size: 1.6rem;
+            border-radius: 12px;
+            border: 2px solid #fff;
+            width: 100% !important;
+            display: block !important;
+            text-align: center;
+        }
+
+        .separator {
+            height: 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            width: 2px;
+        }
+
+        .btn-language {
+            padding: 1rem 1.5rem !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+            min-width: 120px;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        // Fix the language switcher container
+        .d-flex {
+            width: 100% !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 2rem !important;
+        }
+
+        .dropdown {
+            display: flex;
+            justify-content: center;
+            width: auto;
+        }
+    }
+
+    // Prevent body scroll when menu is open
+    body.navbar-expanded {
+        overflow: hidden;
+    }
+}
+
+// Brand Logo Styles
+.navbar-brand {
+    position: relative;
+
+    .navbar-logo-mobile {
+        height: 40px;
+        width: auto;
+
+        @media (min-width: 993px) {
+            display: none;
+        }
+    }
+
+    .navbar-logo-desktop {
+        height: 45px;
+        width: auto;
+        display: none;
+
+        @media (min-width: 993px) {
+            display: block;
+        }
+    }
+
+    @media (max-width: 993px) {
+        flex: 1 !important;
+        justify-content: center !important;
+
+        img {
+            width: 109px !important;
+            height: 44.85px !important;
+        }
+    }
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+    .navbar-collapse {
+        width: 60%;
+    }
+
+    .mobile-nav-section .navbar-nav .nav-link {
+        font-size: 1.6rem !important;
+        padding: 1.2rem 1.5rem !important;
+    }
+
+    .mobile-actions-section .btn {
+        padding: 1.2rem !important;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-collapse {
+        // width: 85%;
+        padding: 1.5rem;
+    }
+
+    .mobile-nav-section .navbar-nav .nav-link {
+        font-size: 1.5rem !important;
+        padding: 1rem 1.2rem !important;
+    }
+
+    .mobile-actions-section {
+        .btn {
+            padding: 1rem !important;
+            font-size: 1.3rem;
+        }
+
+        .btn-language {
+            padding: 0.8rem 1.2rem !important;
+            min-width: 100px;
+        }
+
+        .d-flex {
+            gap: 1rem !important;
+        }
+    }
+}
+
+// Additional fixes for Bootstrap defaults that might interfere
+@media (max-width: 992px) {
+    .navbar-collapse .navbar-nav {
+        flex-direction: column !important;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100% !important;
+    }
+
+    .navbar-nav .nav-link {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+
+    .mobile-close-btn {
+        position: absolute;
+        top: -13px;
+        left: 0;
+        width: 4rem;
+        height: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        background: transparent;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1002;
+        transition: all 0.3s ease;
+
+        // RTL support for Arabic
+        [dir="rtl"] & {
+            right: auto;
+            left: 2rem;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .fa-times {
+            font-size: 1.8rem;
+        }
+    }
+
+    // Adjust mobile nav inner to account for close button
+    .mobile-nav-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100% !important;
+        position: relative;
+        z-index: 1001;
+        gap: 2rem;
+        padding-top: 3rem; // Add padding to make space for close button
+    }
+
+    // Adjust navigation section to account for close button
+    .mobile-nav-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100% !important;
+        // Remove the margin-top since we're using padding on parent
+    }
+}

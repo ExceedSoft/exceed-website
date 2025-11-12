@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { AnimateOnScrollDirective } from '../../../directives/animate.directive';
 
 @Component({
   selector: 'app-slider',
   standalone: true,
-  imports: [TranslatePipe, CarouselModule],
+  imports: [TranslatePipe, CarouselModule, AnimateOnScrollDirective],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
 })

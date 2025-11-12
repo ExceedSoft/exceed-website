@@ -39,6 +39,10 @@
     color: #fff;
     padding-inline-start: 6rem;
 
+    @media(max-width: 767px) {
+        padding-inline-start: 1.5rem;
+    }
+
     h3 {
         font-size: 3.2rem;
     }
@@ -55,6 +59,10 @@
 .second-container {
     padding: 8rem 0 5.2rem 0;
 
+    @media(max-width: 767px) {
+        padding: 4rem 0 5.2rem 0;
+    }
+
     p {
         color: $header;
         text-align: justify;
@@ -64,5 +72,15 @@
 
     &:last-child {
         background-color: $lightBg;
+    }
+}
+
+@media(max-width: 767px) {
+    .row {
+        justify-content: center !important;
+    }
+
+    .exceed-desktop-frame {
+        justify-content: center !important;
     }
 }

@@ -133,19 +133,32 @@
 }
 
 // Responsive adjustments
-@media (max-width: 768px) {
+
+@media(max-width: 1400px) {
+    .planes-details-item-title {
+        width: 300px !important;
+    }
+}
+
+@media (max-width: 992px) {
+
+
+    .plane-item:not(:last-child) {
+        margin-bottom: 12rem;
+    }
+
     .prices-planes {
         .planes-details {
             margin-top: 12rem;
 
             &-item {
-                max-width: 100%;
-                margin: 0 1rem;
+                max-width: auto;
+                margin: 1rem;
 
                 &-title {
-                    width: 320px;
+                    width: 300px;
                     height: 140px;
-                    top: -70px;
+                    top: -100px;
 
                     h3 {
                         font-size: 2rem;
@@ -154,6 +167,7 @@
 
                 &-price {
                     width: 200px;
+                    top: -28px;
 
                     span:first-child {
                         font-size: 2.8rem;
@@ -166,8 +180,74 @@
                     width: 100%;
                     max-width: 320px;
                     margin: 0 1rem;
+                    padding: 1rem;
+                    gap: 0.5rem !important;
+
                 }
             }
         }
     }
+}
+
+@media (max-width: 768px) {
+    .plane-item:not(:last-child) {
+        margin-bottom: 0 !important;
+    }
+
+    .planes-details-content {
+        display: flex;
+        flex-direction: column;
+        gap: 14rem;
+    }
+
+    .prices-planes {
+        .planes-details {
+            margin-top: 12rem;
+
+            &-item {
+                max-width: auto;
+                margin: 1rem;
+
+                &-title {
+                    width: 320px;
+                    height: 140px;
+                    top: -100px;
+
+                    h3 {
+                        font-size: 2rem;
+                    }
+                }
+
+                &-price {
+                    width: 200px;
+                    top: -28px;
+
+                    span:first-child {
+                        font-size: 2.8rem;
+                    }
+                }
+            }
+
+            .pricing-btn-container {
+                .pricing-btn {
+                    width: 100%;
+                    max-width: 320px;
+                    margin: 0 1rem;
+                    padding: 1rem;
+                    gap: 0.5rem !important;
+
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 600px) {
+    // .planes-details-content {
+    //     display: flex;
+    //     flex-direction: column;
+    //     gap: 10rem;
+    // }
+
+
 }
