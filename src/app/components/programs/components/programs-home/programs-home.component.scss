@@ -47,6 +47,10 @@
             font-size: 3.8rem;
             color: $grayColor;
             font-weight: 700;
+
+            @media(max-width: 767px) {
+                text-align: center;
+            }
         }
 
         p {
@@ -57,6 +61,29 @@
             text-align: justify;
         }
 
+        &-img {
 
+            @media(max-width: 767px) {
+                display: flex;
+                justify-content: center;
+                margin-top: 3.8rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+@media(max-width: 600px) {
+    .exceed-text::before {
+        width: 18rem !important;
+    }
+}
+
+@media(max-width: 767px) {
+    .programs-content-img {
+        text-align: center !important;
     }
 }

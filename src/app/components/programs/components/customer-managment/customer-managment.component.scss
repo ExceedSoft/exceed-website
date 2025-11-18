@@ -12,6 +12,10 @@
         font-weight: 700;
         color: $header;
         margin-bottom: 4rem;
+
+        @media(max-width: 767px) {
+            text-align: center;
+        }
     }
 
     p {
@@ -34,6 +38,10 @@
         font-weight: 700;
         color: $header;
         margin-bottom: 4rem;
+
+        @media(max-width: 767px) {
+            text-align: center;
+        }
     }
 
     p {
@@ -56,6 +64,10 @@
         font-weight: 700;
         color: $header;
         margin-bottom: 4rem;
+
+        @media(max-width: 767px) {
+            text-align: center;
+        }
     }
 
     p {
@@ -80,6 +92,10 @@
         font-weight: 700;
         color: $header;
         margin-bottom: 4rem;
+
+        @media(max-width: 767px) {
+            text-align: center;
+        }
     }
 
     p {

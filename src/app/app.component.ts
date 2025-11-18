@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { EnhancedLoadingService } from './services/loading.service';
 import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { NavbarService } from './services/navbar.service';
+import { AnimateOnScrollDirective } from './directives/animate.directive';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { NavbarService } from './services/navbar.service';
     AsyncPipe,
     NavbarComponent,
     FooterComponent,
+    AnimateOnScrollDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

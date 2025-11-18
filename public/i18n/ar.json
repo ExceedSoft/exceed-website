@@ -238,5 +238,9 @@
   "GainThousandTrust": "يكسب ثقة الاف الشركات ?",
   "TourismAndTransport": "إدارة السياحة والنقل والضيافة",
   "Transportation and Travel Management Program": "برنامج تنظيم رحلات النقل والمواصلات",
-  "An application for managing travel and tourism offices": "تطبيق لإدارة مكاتب السفر والسياحة"
+  "An application for managing travel and tourism offices": "تطبيق لإدارة مكاتب السفر والسياحة",
+  "ReadMore": "قراءة المزيد",
+  "ReadLess": "قراءة اقل",
+  "Learn less details about Exceed packages": "اعرف تفاصيل اقل عن باقات اكسيد",
+  "TotalPaymentAmount": "اجمالي المدفوعات"
 }

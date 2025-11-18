@@ -109,6 +109,8 @@
         justify-content: center;
         align-items: stretch; // makes them equal height visually
         flex-wrap: nowrap;
+
+
     }
 
     .package {
@@ -285,5 +287,77 @@
             font-weight: 500;
             color: #fff;
         }
+    }
+}
+
+
+@media(max-width: 1200px) {
+
+    .packages {
+        margin-top: -18rem;
+    }
+}
+
+@media(max-width: 992px) {
+    .packages .container {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .packages .package {
+        width: 100% !important;
+        max-width: 400px;
+
+        // margin-bottom: 2rem;
+        // transform: none !important;
+        &:nth-child(1),
+        &:nth-child(3) {
+            transform: none !important
+        }
+
+        height: auto !important;
+        border-radius: 24px !important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .packages-home {
+        h2 {
+            font-size: 2.8rem;
+        }
+    }
+
+    .packages-btns {
+        span {
+            padding: 18px 70px !important;
+        }
+    }
+
+    .packages-home-wrapper {
+        display: block;
+    }
+
+
+
+    .packages {
+        margin-top: -20rem;
+    }
+
+
+
+
+    .package-content {
+        display: block !important;
+    }
+
+
+
+    .second-list {
+        margin-bottom: 4.8rem !important;
+        margin-top: 2.8rem;
     }
 }

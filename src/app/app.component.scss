@@ -85,6 +85,35 @@
     }
 }
 
+.whatsapp {
+    position: fixed;
+    z-index: 99999;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    inset-inline-start: 20px;
+    background-color: #62B34F;
+    box-shadow: 0px 4px 40px rgba(182, 199, 225, 0.56);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    & {
+        img {
+            transition: transform 0.5s ease-in;
+        }
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.075);
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .scroll-top {
         bottom: 15px;
