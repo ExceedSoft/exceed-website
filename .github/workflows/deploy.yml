@@ -19,17 +19,23 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Ensure we are in the deployment directory
-            cd ${{ secrets.DEPLOY_PATH }}
-
-            # Pull the latest code
-            git pull origin main
-            # **NEW LINE:** Ensure old conflicting container is stopped and removed
-            docker rm -f exceed_web_app || true
-            
-            # Build the new image and restart the container
-            # The --build flag compiles the new Angular code
-            docker compose up -d --build --force-recreate
-
-            # Clean up old images to save disk space
-            docker image prune -f
+              # Ensure we are in the deployment directory
+              cd ${{ secrets.DEPLOY_PATH }}
+              
+              # 1. Reset any local changes on the VPS to match the repository
+              # This fixes the "error: Your local changes..." issue
+              git fetch origin main
+              git reset --hard origin/main
+              git clean -fd
+              
+              # 2. Pull the latest code (just to be sure)
+              git pull origin main
+              
+              # 3. Remove old container
+              docker rm -f exceed_web_app || true
+              
+              # 4. Build and start
+              docker compose up -d --build --force-recreate
+              
+              # 5. Cleanup
+              docker image prune -f
