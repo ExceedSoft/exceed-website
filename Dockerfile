@@ -16,9 +16,10 @@ RUN npm run build -- --output-path=./dist/browser --configuration=production
 FROM nginx:stable-alpine AS final
 # Copy the custom Nginx configuration (we will create this next)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
+# Remove the default nginx index page first
+RUN rm -rf /usr/share/nginx/html/*
 # Copy the built application files from the build stage
-COPY --from=build /app/dist/browser /usr/share/nginx/html
+COPY --from=build /app/dist/browser/ /usr/share/nginx/html/
 
 # Default Nginx port is 80, expose it
 EXPOSE 80
