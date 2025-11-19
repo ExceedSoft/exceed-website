@@ -24,7 +24,9 @@ jobs:
 
             # Pull the latest code
             git pull origin main
-
+            # **NEW LINE:** Ensure old conflicting container is stopped and removed
+            docker rm -f exceed_web_app || true
+            
             # Build the new image and restart the container
             # The --build flag compiles the new Angular code
             docker compose up -d --build --force-recreate
