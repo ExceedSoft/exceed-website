@@ -11,5 +11,5 @@ services:
     # Restart policy ensures the container starts up automatically on reboots
     restart: always
     # Assign a predictable name
-    container_name: exceed_web_app
+    container_name: exceed_website_app
 
