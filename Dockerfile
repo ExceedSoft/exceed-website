@@ -8,21 +8,29 @@ RUN npm install --legacy-peer-deps
 
 # Copy source code and build the application
 COPY . .
-# The output path is typically 'dist/<project-name>', based on your repository name, we'll use a generic path.
-# If the build fails, check your angular.json for the 'outputPath'.
 RUN npm run build -- --output-path=./dist/browser --configuration=production
 
 # Stage 2: Serve the Built Application with Nginx
 FROM nginx:stable-alpine AS final
-# Copy the custom Nginx configuration (we will create this next)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-# Remove the default nginx index page first
+
+# Remove default Nginx static assets
 RUN rm -rf /usr/share/nginx/html/*
-# Copy the built application files from the build stage
-COPY --from=build /app/dist/browser/ /usr/share/nginx/html/
 
-# Default Nginx port is 80, expose it
+# Copy custom Nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# -- CRITICAL FIX --
+# Copy the 'browser' folder from the build stage to a temp directory first
+COPY --from=build /app/dist/browser /tmp/browser
+
+# Move the CONTENTS of /tmp/browser to /usr/share/nginx/html
+# This ensures no nested 'browser' folder exists
+RUN cp -r /tmp/browser/* /usr/share/nginx/html/ && \
+    rm -rf /tmp/browser
+
+# Fix permissions
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
+
 EXPOSE 80
-
-# Command to run the web server
 CMD ["nginx", "-g", "daemon off;"]
