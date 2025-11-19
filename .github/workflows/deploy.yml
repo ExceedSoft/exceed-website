@@ -9,9 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
       - name: Deploy to VPS via SSH and Docker Compose
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -19,22 +16,24 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-              # Ensure we are in the deployment directory
+              # 1. Fix Git Permissions (Crucial Step!)
+              # This prevents the "dubious ownership" error
+              git config --global --add safe.directory ${{ secrets.DEPLOY_PATH }}
+
+              # 2. Go to the project folder
               cd ${{ secrets.DEPLOY_PATH }}
               
-              # 1. Reset any local changes on the VPS to match the repository
-              # This fixes the "error: Your local changes..." issue
+              # 3. Reset local changes to match GitHub exactly
               git fetch origin main
               git reset --hard origin/main
+              
+              # WARNING: 'git clean' will delete files on the server 
+              # that are not in your GitHub repo (like nginx.conf if you didn't push it)
               git clean -fd
               
-              # 2. Pull the latest code (just to be sure)
-              git pull origin main
-              
-              # 3. Remove old container
-              docker rm -f exceed_website_app || true
-              # 4. Build and start
+              # 4. Rebuild and start the container
+              # We don't need to manually 'docker rm' because --force-recreate handles it
               docker compose up -d --build --force-recreate
               
-              # 5. Cleanup
+              # 5. Cleanup unused images
               docker image prune -f
