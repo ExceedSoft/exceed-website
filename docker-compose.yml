@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web:
+    # Build the image using the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Map host port 80 to container port 80
+    ports:
+      - "80:80"
+    # Restart policy ensures the container starts up automatically on reboots
+    restart: always
+    # Assign a predictable name
+    container_name: exceed_web_app
+
