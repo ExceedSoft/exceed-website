@@ -20,24 +20,21 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
               # Ensure we are in the deployment directory
-              cd ***
-
+              cd ${{ secrets.DEPLOY_PATH }}
+              
               # 1. Reset any local changes on the VPS to match the repository
+              # This fixes the "error: Your local changes..." issue
               git fetch origin main
               git reset --hard origin/main
               git clean -fd
-
+              
               # 2. Pull the latest code (just to be sure)
               git pull origin main
-
+              
               # 3. Remove old container
-              docker rm -f exceed_web_app || true
-
+              docker rm -f exceed_website_app || true
               # 4. Build and start
               docker compose up -d --build --force-recreate
-
-              # 5. Check the active configuration file in the running container
-              docker exec exceed_website_app cat /etc/nginx/conf.d/default.conf
-
-              # 6. Cleanup
+              
+              # 5. Cleanup
               docker image prune -f
