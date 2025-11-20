@@ -11,13 +11,20 @@ jobs:
     steps:
       - name: Deploy to VPS via SSH and Docker Compose
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          # Verify this matches the secret name in GitHub
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # We must explicitly pass the env variable to the script
+          envs: SLACK_WEBHOOK
           script: |
-              # 1. Fix Git Permissions (Crucial Step!)
-              # This prevents the "dubious ownership" error
+              # Export the variable so it is available in the shell
+              export SLACK_WEBHOOK="$SLACK_WEBHOOK"
+
+              # 1. Fix Git Permissions
               git config --global --add safe.directory ${{ secrets.DEPLOY_PATH }}
 
               # 2. Go to the project folder
@@ -26,18 +33,24 @@ jobs:
               # 3. Reset local changes to match GitHub exactly
               git fetch origin main
               git reset --hard origin/main
-              
-              # WARNING: 'git clean' will delete files on the server 
-              # that are not in your GitHub repo (like nginx.conf if you didn't push it)
               git clean -fd
               
-              # 4. Rebuild and start the container
-              # We don't need to manually 'docker rm' because --force-recreate handles it
+              # 4. INJECT SLACK SECRET INTO ALERTMANAGER
+              # This finds the placeholder text and replaces it with the real URL
+              if [ -f "monitoring/alertmanager/config.yml" ]; then
+                sed -i "s|REPLACE_WITH_ACTUAL_WEBHOOK_URL|$SLACK_WEBHOOK|g" monitoring/alertmanager/config.yml
+                echo "✅ Slack Webhook injected into Alertmanager config."
+              else
+                echo "⚠️ Warning: Alertmanager config not found. Skipping injection."
+              fi
+              
+              # 5. Rebuild and start the container
               docker compose up -d --build --force-recreate
               
-              # 5. Cleanup unused images
+              # 6. Cleanup unused images
               docker image prune -f
-                # --- SLACK NOTIFICATION STEP ---
+
+      # --- SLACK NOTIFICATION STEP ---
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2
         if: always() # Run this even if the deploy failed
@@ -45,7 +58,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: GitHub DeployBot
           SLACK_ICON_EMOJI: ":rocket:"
-          SLACK_COLOR: ${{ job.status }} # Automatically sets Green for Success, Red for Failure
+          SLACK_COLOR: ${{ job.status }} 
           SLACK_TITLE: "Deployment Status"
           SLACK_MESSAGE: "Deployment to VPS finished with status: ${{ job.status }}"
           SLACK_FOOTER: "Exceed Website"
