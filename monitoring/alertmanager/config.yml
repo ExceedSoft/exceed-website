@@ -14,7 +14,13 @@ receivers:
     title: '{{ if eq .Status "firing" }}🔥 Website is DOWN{{ else }}✅ Website is UP{{ end }}'
     text: >-
       {{ range .Alerts }}
-        *Alert:* {{ .Annotations.summary }}
-        *Description:* {{ .Annotations.description }}
-        *Reason:* Check probe_http_status_code metric.
+        {{ if eq .Status "firing" }}
+          *Status:* 🔴 Critical
+          *Problem:* {{ .Annotations.description }}
+          *Action:* Check the server logs or 'probe_http_status_code'.
+        {{ else }}
+          *Status:* 🟢 Recovered
+          *Message:* The website is back online and responding correctly. 🚀
+          *Duration:* The downtime lasted for {{ .EndsAt.Sub .StartsAt }}
+        {{ end }}
       {{ end }}
