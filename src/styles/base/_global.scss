@@ -41,7 +41,11 @@ body {
 [dir="ltr"] {
     body {
         font-family: $font-english;
-        font-weight: 600;
+        font-weight: 600 !important;
+
+        * {
+            font-weight: 600;
+        }
     }
 
     h1,

@@ -242,5 +242,6 @@
   "ReadMore": "قراءة المزيد",
   "ReadLess": "قراءة اقل",
   "Learn less details about Exceed packages": "اعرف تفاصيل اقل عن باقات اكسيد",
-  "TotalPaymentAmount": "اجمالي المدفوعات"
+  "TotalPaymentAmount": "اجمالي المدفوعات",
+  "overPaymentEntry": "دفعة زائده"
 }
