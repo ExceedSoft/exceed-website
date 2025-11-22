@@ -278,8 +278,10 @@
     margin-top: 4rem;
     flex-wrap: wrap;
 
-    @media(max-height: 900px) {
+    @media(max-height: 992px) {
         margin-top: 1rem !important;
+        padding-bottom: 1rem;
+        gap: 1rem;
     }
 
     p {
@@ -288,7 +290,7 @@
     }
 
     @media (max-width: 600px) {
-        margin-top: 2rem;
+        margin-top: 0.5rem;
     }
 }
 
@@ -303,6 +305,10 @@
     justify-content: center;
     gap: 1.5rem;
     min-width: 280px;
+
+    @media(max-width: 992px) {
+        margin-bottom: 0.5rem !important;
+    }
 
     @media (max-width: 600px) {
         width: 100%;
@@ -326,12 +332,17 @@
 
 .slide-up-modal .modal-dialog {
     margin: 0 auto;
-    width: 100%;
-    max-width: 45rem;
+    width: 45%;
+    // max-width: 45rem;
+    max-width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+
+    @media(max-width: 900px) {
+        width: 85%;
+    }
 }
 
 .slide-up-modal .modal-content {
@@ -340,6 +351,10 @@
     border: none;
     background: #F4F8FD;
     box-shadow: 0 4px 40px 0 rgba(159, 189, 230, 0.16);
+
+    .fa-xmark {
+        font-size: 1.8rem;
+    }
 }
 
 .modal-body {
@@ -350,7 +365,7 @@
     box-shadow: 0 4px 40px 0 rgba(79, 109, 150, 0.24);
 
     label {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         color: $label;
     }
 
@@ -360,6 +375,7 @@
 
         &::placeholder {
             color: $input;
+            font-size: 1.2rem;
         }
     }
 }
@@ -479,10 +495,3 @@
         font-size: 1.2rem;
     }
 }
-
-
-// @media(max-width: 1024px) {
-//     .container-fluid {
-//         justify-content: center !important;
-//     }
-// }
