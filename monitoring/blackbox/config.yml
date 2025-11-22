@@ -1,0 +1,8 @@
+modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      valid_status_codes: []  # Defaults to 2xx
+      method: GET
+      follow_redirects: true  # Important because you have / -> /en/ redirect

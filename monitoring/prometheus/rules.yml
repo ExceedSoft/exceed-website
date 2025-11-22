@@ -1,0 +1,12 @@
+groups:
+- name: website_status
+  rules:
+  - alert: WebsiteDown
+    # Alert if probe_success is 0 (Fail) for 1 minute
+    expr: probe_success == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Website is DOWN"
+      description: "The website {{ $labels.instance }} is unreachable. It has been down for more than 1 minute."
